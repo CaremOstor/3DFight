@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://im6fvvj1lhct"]
+
+[ext_resource type="Texture2D" uid="uid://bequ2m1yorkgx" path="res://UI/UI_WhiteSquare.png" id="1_lbauk"]
+[ext_resource type="Script" path="res://HPbar.gd" id="2_fb0bb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ycg0"]
+font_size = 37
+font_color = Color(0.541176, 0.317647, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fb0bb")
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 76.0
+offset_right = 315.0
+offset_bottom = 114.0
+value = 5.0
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("1_lbauk")
+texture_progress = ExtResource("1_lbauk")
+tint_under = Color(0.333333, 0.333333, 0.333333, 1)
+tint_progress = Color(0.827451, 0.309804, 0.101961, 1)
+
+[node name="GoldText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 169.0
+offset_bottom = 75.0
+text = "GOLD: 0"
+label_settings = SubResource("LabelSettings_3ycg0")
+
+[connection signal="value_changed" from="HPBar" to="HPBar" method="_on_value_changed"]
